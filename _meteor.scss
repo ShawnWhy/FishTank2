@@ -1,0 +1,125 @@
+$angle: 25deg;
+
+.meteorPath {
+  width: 100%;
+  position: absolute;
+  transform: rotate($angle);
+  pointer-events: none;
+}
+.meteorPath div {
+  pointer-events: all;
+}
+
+.petalclosed {
+  position: absolute;
+  width: 100px;
+  height: 10px;
+  border-radius: 50%;
+  transform-origin: center;
+  left: -50%;
+  top: 50%;
+  transition: transform 0.2s;
+}
+
+.meteorGo {
+  transform-origin: center;
+  animation: meteorRotate 2s linear infinite;
+}
+
+@keyframes meteorRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.meteorStop {
+  .petalclosed {
+  }
+}
+
+.meteor {
+  height: 50px;
+  width: 50px;
+
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+
+  .petalclosed {
+  }
+}
+
+.meteor2 {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  position: relative;
+
+  .petalclosed {
+  }
+}
+
+.newPetal {
+  position: relative;
+  width: 100px;
+  height: 10px;
+  border-radius: 50%;
+  transform-origin: center;
+  // left: -50%;
+  // top: 50%;
+  animation: petalSpin 0.2s 10;
+}
+
+.newPetalContainer {
+  position: absolute;
+  animation: petalFall 2.5s both;
+  overflow: visible;
+}
+@keyframes petalSpin {
+  0% {
+    transform: scaleY(1);
+    /* translateY(0%) */
+  }
+
+  25% {
+    transform: scaleY(0.5);
+  }
+
+  50% {
+    transform: scaleY(0.1);
+  }
+
+  75% {
+    transform: scaleY(0.5);
+  }
+
+  100% {
+    transform: scaleY(1);
+    /* translateY(500%) */
+  }
+}
+@keyframes petalFall {
+  100% {
+    transform: translateY(700px);
+  }
+}
+
+.stemRoot {
+  z-index: -1;
+  height: 50px;
+  width: 10px;
+  position: absolute;
+  background-color: rgb(35, 104, 35);
+}
+
+.stem {
+  height: 50px;
+  width: 10px;
+  position: relative;
+  transform-origin: top;
+  background-color: rgb(87, 117, 42);
+  top: 100%;
+}
