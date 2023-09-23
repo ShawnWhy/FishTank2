@@ -1,11 +1,11 @@
-.fishTank{
+$fishSize:200px;
 
+.fishTank{
     position:relative;
-    top:20%;
+    top:100px;
     border-top: 20px solid rgb(40, 42, 43);
     border-left:5px solid rgb(40, 42, 43);
     border-right: 5pxsolid rgb(40, 42, 43);
-    
     border-bottom: 50px solid rgb(40, 42, 43);
     width:80px;
     min-height:500px;
@@ -13,9 +13,187 @@
     background-image: linear-gradient(to top, rgb(23, 13, 64), rgb(146, 220, 247));
     height:60%;
     margin:auto;
-
+    // z-index:-100;
 }
 
 .base{
+
+}
+
+.fish{
+    position:absolute;
+    // left:30%;
+    // top:30%;
+}
+
+.fishBody{
+    height:$fishSize;
+    width:$fishSize;
+    border-radius:50%;
+    background-color:yellow;
+    overflow: visible;
+    z-index:1;
+}
+
+.fishSideFin{
+    position:absolute;
+    height:30%;
+    width:30%;
+    top:80%;
+    left:50%;
+    display:flex;
+    z-index:2;
+
+
+}
+.fishSideFinSub{
+    width:10%;
+    height:100%;
+    background-color: rgb(206, 185, 52);
+    transform-origin: top;
+    border-radius:3px;
+    position:absolute;
+
+}
+
+.fishMouth{
+    position:absolute;
+    height:10%;
+    width:30%;
+    top:50%;
+    left:-20%;
+    z-index:2;
+
+}
+
+.fishUpperLip{
+    transform-origin:right;
+    height:50%;
+    width:100%;
+    position:absolute;
+    background-color:rgb(233, 180, 66);
+    border-radius:3px;
+}
+
+.fishLowerLip{
+    transform-origin:right;
+    top:50%;
+    height:50%;
+    width:100%;
+    position:absolute;
+    background-color:rgb(237, 189, 55);
+    border-radius:3px;
+
+
+}
+
+.fishTopFin{
+height:30%;
+width:60%;
+left:28%;
+top:-20%;
+display:flex;
+position:absolute;
+z-index: 0;
+
+}
+
+.fishTopFinSub{
+    position:absolute;
+    transform-origin:bottom;
+    height:100%;
+    width:10%;
+    border-radius:3px;
+    background-color: rgb(255, 255, 0);  
+}
+
+.fishEyes{
+    position:absolute;
+    display:flex;
+    width:40%;
+    height:10%;
+    left:-1%;
+    top:30%;
+    z-index:1;
+
+
+}
+.fishEyeSub{
+    display:flex;
+    height:100%;
+    width:30%;
+    border-radius:50%;
+    background-image: radial-gradient(white,white 50%,black 90% );
+
+}
+.fishIris{
+
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    background-color: black;
+    margin:auto;
+    top:50%;
+}
+
+.fishTail{
+    position:absolute;
+    top:40%;
+    left:99%;
+    height:40%;
+    width:30%;
+    display:flex;
+    flex-direction: column;
+    z-index: 0;
+
+}
+
+
+.fishTailSub{
+    position:absolute;
+    width:100%;
+    height:10%;
+    border-radius:3px;
+    background-color:rgb(175, 175, 5);
+    transform-origin: left;
+}
+
+.fishScaleContainer{
+    height:100%;
+    width:100%;
+    position:absolute;
+    border-radius:50%;
+    background-color: orange;
+    overflow: hidden;
+}
+.fishScaleColumn{
+    position:absolute;
+    height:280px;
+    // display:flex;
+    width:20px;
+     z-index:0;
+    
+    // flex-direction: column;
+
+}
+.fishScale{
+    position:relative;
+    height:20px;
+    width:20px;
+    border-radius:50%;
+    background-color: aliceblue;
+    border:1px orange solid;
+   
+
+}
+
+.fishFace{
+height: 300px;
+width:400px;
+background-color: salmon;
+position:absolute;
+left:-150%;
+border-radius:50%;
+z-index:1;
 
 }
