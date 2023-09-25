@@ -48,9 +48,13 @@ const fishTank = document.getElementsByClassName("fishTank");
 console.log(fishTank)
 fishTank[0].addEventListener("mousemove", (event) => {
   // console.log(event)
-  mouseLeft = event.clientX;
-  mouseTop = event.clientY;
-  $(".fish").css("top", mouseTop - 100 + "px");
-  $(".fish").css("left", mouseLeft - 100 + "px");
+  mouseLeft = event.offsetX;
+  mouseTop = event.offsetY;
+  console.log(mouseLeft)
+  console.log(mouseTop)
+  if($(event.target).hasClass("fishTank")){
+  $(".fish").css("top", (mouseTop+50)  + "px");
+  $(".fish").css("left", (mouseLeft-50)  + "px");
+  }
   // console.log(mouseTop);
 });

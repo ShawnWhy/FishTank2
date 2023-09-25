@@ -13,6 +13,7 @@ $fishSize:200px;
     background-image: linear-gradient(to top, rgb(23, 13, 64), rgb(146, 220, 247));
     height:60%;
     margin:auto;
+    overflow: hidden;
     // z-index:-100;
 }
 
@@ -43,6 +44,8 @@ $fishSize:200px;
     left:50%;
     display:flex;
     z-index:2;
+    transform-origin: 20% 0%;
+    animation:flap 1s linear infinite;
 
 
 }
@@ -73,6 +76,8 @@ $fishSize:200px;
     position:absolute;
     background-color:rgb(233, 180, 66);
     border-radius:3px;
+    transform-origin: 100% 20%;
+    animation: openmouth1 1s linear infinite;
 }
 
 .fishLowerLip{
@@ -83,6 +88,9 @@ $fishSize:200px;
     position:absolute;
     background-color:rgb(237, 189, 55);
     border-radius:3px;
+    transform-origin: 100% 20%;
+    animation: openmouth2 1s linear infinite;
+
 
 
 }
@@ -145,8 +153,31 @@ z-index: 0;
     display:flex;
     flex-direction: column;
     z-index: 0;
+    transform-origin: 0% 20%;
+    animation:flap 1s linear infinite;
+    animation-delay: .5s;
 
 }
+
+@keyframes flap {
+    0%{ transform:rotate(10deg)}
+    50%{ transform:rotate(-10deg)}
+    100%{transform:rotate(10deg)}
+    
+}
+@keyframes openmouth1 {
+    0%{ transform:rotate(10deg)}
+    50%{transform:rotate(0deg)}
+    100%{ transform:rotate(10deg)}
+    
+}
+@keyframes openmouth2 {
+    0%{ transform:rotate(-10deg)}
+    50%{transform:rotate(0deg)}
+    100%{ transform:rotate(-10deg)}
+    
+}
+
 
 
 .fishTailSub{
