@@ -39,22 +39,45 @@ var scaleColumns = $(fishClass + " .fishScaleColumn");
         // $(value).css("left", index * 4 + "px");
       });
 
+      scaleColumns.each(function(index, value){
+        $(value).css("left", (200-10*index)+"px")
+        if(index%2<1){
+           $(value).css("top", "10px");
+
+        }
+      })
+
 }
 
 setupFish(".fish1")
 
-
+var formerX = 0;
 const fishTank = document.getElementsByClassName("fishTank");
-console.log(fishTank)
 fishTank[0].addEventListener("mousemove", (event) => {
-  // console.log(event)
   mouseLeft = event.offsetX;
   mouseTop = event.offsetY;
-  console.log(mouseLeft)
-  console.log(mouseTop)
+
+
   if($(event.target).hasClass("fishTank")){
   $(".fish").css("top", (mouseTop+50)  + "px");
   $(".fish").css("left", (mouseLeft-50)  + "px");
+
+    if (mouseLeft > formerX) {
+      $(".fish").css("transform", "scaleX(-1)");
+    } else {
+      $(".fish").css("transform", "");
+    }
+    formerX = mouseLeft;
+  
   }
-  // console.log(mouseTop);
+});
+
+fishTank[0].addEventListener("mousedown", (event) => {
+$(".fishLowerLip").addClass("fishLowerLipAnimate");
+$(".fishUpperLip").addClass("fishUpperLipAnimate");
+});
+
+document.addEventListener("mouseup", (event) => {
+  $(".fishLowerLip").removeClass("fishLowerLipAnimate");
+  $(".fishUpperLip").removeClass("fishUpperLipAnimate");
 });

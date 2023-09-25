@@ -77,9 +77,14 @@ $fishSize:200px;
     background-color:rgb(233, 180, 66);
     border-radius:3px;
     transform-origin: 100% 20%;
-    animation: openmouth1 1s linear infinite;
 }
+.fishUpperLipAnimate{
+    animation: openmouth1 .3s linear infinite;
+}
+.fishLowerLipAnimate{
+    animation: openmouth2 .3s linear infinite;
 
+}
 .fishLowerLip{
     transform-origin:right;
     top:50%;
@@ -89,7 +94,6 @@ $fishSize:200px;
     background-color:rgb(237, 189, 55);
     border-radius:3px;
     transform-origin: 100% 20%;
-    animation: openmouth2 1s linear infinite;
 
 
 
@@ -99,7 +103,7 @@ $fishSize:200px;
 height:30%;
 width:60%;
 left:28%;
-top:-20%;
+top:-25%;
 display:flex;
 position:absolute;
 z-index: 0;
@@ -212,8 +216,8 @@ z-index: 0;
     height:20px;
     width:20px;
     border-radius:50%;
-    background-color: aliceblue;
-    border:1px orange solid;
+    background-color: rgb(222, 129, 22);
+    border:1px rgb(247, 228, 191) solid;
    
 
 }
@@ -227,4 +231,21 @@ left:-150%;
 border-radius:50%;
 z-index:1;
 
+}
+
+.fishFoodCan{
+    height:50px;
+    width:40px;
+    border-top:3px solid gray;
+    border-bottom:3px solid gray;
+    background-color: blue;
+    position:absolute;
+
+
+}
+
+.fishFoodCanContainer{
+    position:absolute;
+    left:40%;
+    top:50px;
 }
