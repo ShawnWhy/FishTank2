@@ -36,6 +36,7 @@ body {
 
 .fish {
   position: absolute;
+  pointer-events: none;
 }
 
 .fishBody {
@@ -162,7 +163,7 @@ body {
   flex-direction: column;
   z-index: 0;
   transform-origin: 0% 20%;
-  animation: flap 1s linear infinite;
+  animation: flap 0.4s linear infinite;
   animation-delay: 0.5s;
 }
 
@@ -255,5 +256,38 @@ body {
 .fishFoodCanContainer {
   position: absolute;
   left: 40%;
+  top: 60px;
+  width: 40px;
+}
+
+.canFollow {
+  transform-origin: center;
+  animation: flap 0.2s linear infinite;
+}
+
+.canFollowContainer {
   top: 50px;
+  pointer-events: none;
+}
+
+.flakeContainer {
+  position: absolute;
+}
+
+.flake {
+  height: 10px;
+  width: 10px;
+  animation: flake 0.5s linear infinite;
+}
+
+@keyframes flake {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
