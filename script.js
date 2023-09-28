@@ -53,10 +53,12 @@ $("body").mousemove((e) => {
 });
 
 var formerX = 0;
+var formerY;
 const fishTank = document.getElementsByClassName("fishTank");
 fishTank[0].addEventListener("mousemove", (event) => {
   mouseLeft = event.offsetX;
   mouseTop = event.offsetY;
+  
 
   if ($(event.target).hasClass("fishTank")) {
     $(".fish").css("top", mouseTop + 50 + "px");
@@ -64,10 +66,11 @@ fishTank[0].addEventListener("mousemove", (event) => {
 
     if (mouseLeft > formerX) {
       $(".fish").css("transform", "scaleX(-1)");
-    } else {
+    } else if (mouseLeft < formerX) {
       $(".fish").css("transform", "");
     }
     formerX = mouseLeft;
+    formerY=mouseTop;
   }
 });
 
@@ -113,6 +116,8 @@ function createFlake(left){
   flake.css("background-color",randomColor1())
   var flakeContainer = $("<div>")
   flakeContainer.addClass("flakeContainer")
+    flakeContainer.addClass("notEaten");
+
   flakeContainer.append(flake);
   flakeContainer.css("left",left+"px")
   flakeContainer.css("top", 0 + "px");
@@ -124,26 +129,79 @@ function flakeFall(left) {
   tankX = fishTank[0].getBoundingClientRect().x;
   tankX2 = tankX + fishTank[0].getBoundingClientRect().width;
   if (left < tankX2 && left > tankX) {
-    console.log("inbod")
+    // console.log("inbod")
     var fallX = parseFloat(left) - parseFloat(tankX);
-    console.log(fallX)
+    // console.log(fallX)
     createFlake(fallX);
   }
 }
 
+function eat(flakeContainer) {
+
+  $(flakeContainer).removeClass("notEaten");
+  // console.log("eating");
+  // console.log(flakeContainer);
+
+  
+  eatenColor = $(flakeContainer).find(".flake").css("background-color");
+
+  flashingScales()
+  // console.log($(flakeContainer).find(".flake"));
+  // console.log(eatenColor)
+  setTimeout(() => {
+      $(flakeContainer).find(".flake").remove();
+
+  }, 100);
+  for (let i = 0; i < 20; i++) {  
+    let smallFlake = $("<div>");
+    smallFlake.addClass("smallFlake");
+    let randTop = Math.random() * 40 - 20;
+    let randleft = Math.random() * 40 - 20;
+    smallFlake.css("background-color", eatenColor);
+    smallFlake.css("top", randTop + "px");
+    smallFlake.css("left", randleft + "px");
+    // console.log(flakeContainer)
+    $(flakeContainer).append(smallFlake);
+  }
+
+
+}
 
 setInterval(() => {
+
+  var mouthBox = $(".fishMouth").position()
+  var fishBox = $(".fish").position()
+  // console.log(mouthBox)
+  mouthLeft = parseFloat(fishBox.left)+parseFloat(mouthBox.left);
+  mouthTop = parseFloat(fishBox.top)+parseFloat(mouthBox.top);
+  mouthRight = mouthLeft + 60
+  mouthBottom = mouthTop+ 20
+  // console.log(mouthLeft)
+  // console.log(mouthRight)
+  // console.log(mouthTop)
+  // console.log(mouthBottom)
   var flakes=$(".flakeContainer");
+
     flakes.each(function (index, value) {
       let tempTop = $(value).css("top");
+      let tempLeft = $(value).css("left")
       let newTop = tempTop.split("px")[0];
+      let newLeft = tempLeft.split("px")[0]
+      if(newTop>=mouthTop&&newTop<=mouthBottom&&newLeft>=mouthLeft&&newLeft<=mouthRight&&$(value).hasClass("notEaten")&&feeding){
+
+        // console.log("eat 1")
+        eat(value)
+
+
+      }
+      
       if(newTop>500){
         $(value).remove();
         
       }
       else{
       newTop = parseFloat(newTop)+1
-      console.log("newTop" + newTop)
+      // console.log("newTop" + newTop)
     
         $(value).css("top", newTop+"px");
       }
@@ -155,3 +213,42 @@ setInterval(() => {
 
   
 }, 20);
+
+
+
+
+function flashingScales(){
+  // var scales = $(".fishScale")
+  var scales = document.getElementsByClassName("fishScale")
+  console.log(scales[100])
+  // console.log(scales.length);
+
+  for(i=0;i<50;i++){
+    let randInt = Math.floor(Math.random()*parseInt(scales.length)-1)
+   let randInt2 = Math.floor(Math.random() * parseInt(scales.length) - 1);
+      let randInt3 = Math.floor(Math.random() * parseInt(scales.length) - 1);
+    let randInt4 = Math.floor(Math.random()*parseInt(scales.length)-1)
+
+
+
+    setTimeout(() => {
+        
+        
+       scales[randInt].setAttribute("style","background-color:"+eatenColor)
+              scales[randInt2].setAttribute(
+                "style",
+                "background-color:" + eatenColor
+              );
+       scales[randInt3].setAttribute("style", "background-color:" + eatenColor);
+       scales[randInt4].setAttribute("style", "background-color:" + eatenColor);
+
+           
+
+
+    }, 50*i);
+  }
+
+
+
+  
+}

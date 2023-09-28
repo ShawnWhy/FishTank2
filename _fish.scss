@@ -265,11 +265,18 @@ z-index:1;
 
 .flakeContainer{
     position:absolute;
+    overflow: visible;
 }
 
 .flake{
        height:10px;
     width:10px;
+    animation:flake .5s linear infinite
+}
+.smallFlake{
+    position:absolute;
+    height:2px;
+    width:2px;
     animation:flake .5s linear infinite
 }
 
